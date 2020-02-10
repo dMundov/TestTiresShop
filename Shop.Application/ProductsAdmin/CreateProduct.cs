@@ -6,7 +6,7 @@ using Shop.Application.ViewModels;
 using Shop.Database;
 using Shop.Domain.Models;
 
-namespace Shop.Application.Products
+namespace Shop.Application.ProductsAdmin
 {
     public class CreateProduct
     {

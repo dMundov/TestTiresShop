@@ -23,22 +23,11 @@ namespace TiresShop.UI.Pages
             _dbContext = dbContext;
         }
 
-
-        [BindProperty]
-        public ProductViewModel Product { get; set; }
-
         public IEnumerable<ProductViewModel> AllProducts { get; set; }
-
 
         public void OnGet()
         {
             AllProducts = new GetProducts(_dbContext).GetAllProducts();
-        }
-
-        public async Task<IActionResult> OnPost()
-        {
-            await new CreateProduct(_dbContext).Do(Product);
-            return RedirectToPage("Index");
         }
     }
 }
