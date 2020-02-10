@@ -28,13 +28,13 @@ namespace TiresShop.UI.Controllers
         public IActionResult GetProductById(int id) => Ok(new GetProductById(_context).ProductById(id));
        
         [HttpPost("createProduct")]
-        public IActionResult CreateProduct([FromBody]CreateProduct.ProductCreateModel productModel) => Ok(new CreateProduct(_context).Create(productModel));
+        public async Task<IActionResult> CreateProduct([FromBody]CreateProduct.Request request) => Ok(await new CreateProduct(_context).Create(request));
         
         [HttpDelete("products/{id}")]
-        public IActionResult DeleteProduct(int id) => Ok(new DeleteProduct(_context).Delete(id));
+        public async Task<IActionResult> DeleteProduct(int id) => Ok((await new DeleteProduct(_context).Delete(id)));
         
         [HttpPut("updateProduct")]
-        public IActionResult UpdateProduct(ProductViewModel productModel ) => Ok(new UpdateProduct(_context).Update(productModel));
+        public async Task<IActionResult> UpdateProduct(UpdateProduct.Request request ) => Ok(await new UpdateProduct(_context).Update(request));
 
         
 

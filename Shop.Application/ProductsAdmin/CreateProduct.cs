@@ -17,20 +17,40 @@ namespace Shop.Application.ProductsAdmin
             _context = context;
         }
 
-        public async Task Create(ProductCreateModel productViewModel)
+        public async Task<Response> Create(Request request)
         {
-            _context.Products.Add(new Product
+            Product product = new Product
             {
-                Name = productViewModel.Name,
-                Desctiption = productViewModel.Description,
-                Value = productViewModel.Value
-            });
+                Name = request.Name,
+                Desctiption = request.Description,
+                Value = request.Value
+            };
 
+            _context.Products.Add(product);
             await _context.SaveChangesAsync();
+            
+            return new Response
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Desctiption,
+                Value = product.Value
+            };
         }
         
-        public class ProductCreateModel
+        public class Request
         {
+
+            public string Name { get; set; }
+
+            public string Description { get; set; }
+
+            public decimal Value { get; set; }
+        }
+
+        public class Response
+        {
+            public int Id { get; set; }
 
             public string Name { get; set; }
 

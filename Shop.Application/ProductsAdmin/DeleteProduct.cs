@@ -18,12 +18,13 @@ namespace Shop.Application.Products
             _context = context;
         }
 
-        public async Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
             var productToRemove = _context.Products
                 .FirstOrDefault(x => x.Id == id);
             _context.Products.Remove(productToRemove);
             await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

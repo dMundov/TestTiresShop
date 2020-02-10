@@ -15,14 +15,35 @@ namespace Shop.Application.Products
         public UpdateProduct(ShopDbContext context)
         {
             _context = context;
+            
         }
 
-        public async Task Update(ProductViewModel productViewModel)
+        public async Task<Response> Update(Request request)
         {
 
             await _context.SaveChangesAsync();
+            return new Response();
         }
 
+        public class Request
+        {
 
+            public string Name { get; set; }
+
+            public string Description { get; set; }
+
+            public decimal Value { get; set; }
+        }
+
+        public class Response
+        {
+            public int Id { get; set; }
+
+            public string Name { get; set; }
+
+            public string Description { get; set; }
+
+            public decimal Value { get; set; }
+        }
     }
 }

@@ -3,9 +3,9 @@
     data: {
         loading: false,
         productModel: {
-            name: "ProductName",
-            description: "ProductDescription",
-            value: 2.59
+            name: 'TestName',
+            description: 'TestDescription',
+            value: 2.22
         },
         products:[],
     },
@@ -29,7 +29,8 @@
             this.loading = true;
             axios.post('/Admin/createProduct', this.productModel)
                 .then(res => {
-                    console.log(res);
+                    console.log(res.data);
+                    this.products.push(res.data);
                 })
                 .catch(err => {
                     console.log(err);
