@@ -17,7 +17,7 @@ namespace Shop.Application.ProductsAdmin
             _context = context;
         }
 
-        public async Task Do(ProductViewModel productViewModel)
+        public async Task Create(ProductViewModel productViewModel)
         {
             _context.Products.Add(new Product
             {

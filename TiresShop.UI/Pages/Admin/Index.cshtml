@@ -1,0 +1,28 @@
+﻿@page
+@model IndexModel
+@{
+}
+<div id="app">
+    <input type="number" @@change="alert('hello')" v-model="price" />
+    <button v-on:click="togglePrice">Toggle</button>
+    <button v-on:click="getProducts">GetProducts</button>
+    <br />
+    <p v-show="showPrice">
+        {{price}}
+    </p>
+    <p v-if="showPrice">
+        {{formatPrice}}
+    </p>
+    <div>
+        <p v-for="product in products">
+            {{product.id}} - {{product.name}} - {{product.description}} - {{product.value}}
+        </p>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="~/js/Admin/main.js"></script>
+}

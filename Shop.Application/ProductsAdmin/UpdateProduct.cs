@@ -17,7 +17,7 @@ namespace Shop.Application.Products
             _context = context;
         }
 
-        public async Task Do(ProductViewModel productViewModel)
+        public async Task Update(ProductViewModel productViewModel)
         {
 
             await _context.SaveChangesAsync();

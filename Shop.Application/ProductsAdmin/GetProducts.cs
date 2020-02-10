@@ -21,7 +21,7 @@ namespace Shop.Application.ProductsAdmin
         public IEnumerable<ProductViewModel> GetAllProducts()
         {
 
-            IEnumerable<ProductViewModel> allProducts = _context.Products
+            return  _context.Products
                 .Select(x => new ProductViewModel
                 {
                     Id = x.Id,
@@ -31,7 +31,7 @@ namespace Shop.Application.ProductsAdmin
                 })
                 .ToList();
 
-            return allProducts;
+            
         }
     }
 }
