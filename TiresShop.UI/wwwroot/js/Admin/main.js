@@ -1,18 +1,16 @@
 ﻿var app = new Vue({
     el: "#app",
     data: {
-        price: 0,
-        showPrice: true,
         loading: false,
+        productModel: {
+            name: "ProductName",
+            description: "ProductDescription",
+            value: 2.59
+        },
         products:[],
     },
     methods: {
-        togglePrice: function () {
-            this.showPrice = !this.showPrice;
-        },
-        alert(v) {
-            alert(v);
-        },
+        
         getProducts() {
             this.loading = true;
             axios.get('/Admin/allProducts')
@@ -26,11 +24,19 @@
                 .then(() => {
                     this.loading = false;
                 });
-        }
-    },
-    computed: {
-        formatPrice: function () {
-            return "$" + this.price;
+        },
+        createProduct() {
+            this.loading = true;
+            axios.post('/Admin/createProduct', this.productModel)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .then(() => {
+                    this.loading = false;
+                });
         }
     }
 });

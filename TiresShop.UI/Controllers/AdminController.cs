@@ -27,8 +27,8 @@ namespace TiresShop.UI.Controllers
         [HttpGet("products/{id}")]
         public IActionResult GetProductById(int id) => Ok(new GetProductById(_context).ProductById(id));
        
-        [HttpGet("createProduct")]
-        public IActionResult CreateProduct(ProductViewModel productModel) => Ok(new CreateProduct(_context).Create(productModel));
+        [HttpPost("createProduct")]
+        public IActionResult CreateProduct([FromBody]CreateProduct.ProductCreateModel productModel) => Ok(new CreateProduct(_context).Create(productModel));
         
         [HttpDelete("products/{id}")]
         public IActionResult DeleteProduct(int id) => Ok(new DeleteProduct(_context).Delete(id));
